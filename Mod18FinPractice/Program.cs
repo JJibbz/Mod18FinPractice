@@ -6,10 +6,10 @@ namespace Mod18FinPractice
     {
         static void Main(string[] args)
         {
-            string destinationSource = "video.mp4";
+            string DSource = "vid.mp4";
 
-            if (File.Exists(destinationSource))
-                File.Delete(destinationSource);
+            if (File.Exists(DSource))
+                File.Delete(DSource);
 
 
             Console.Write("Введите ссылку на видео: ");
@@ -18,7 +18,7 @@ namespace Mod18FinPractice
             var sender = new Sender();
 
             var videoInfo = new VideoInfoReciever(link);
-            var VideoDownload = new VideoDownloader(link, destinationSource);
+            var VideoDownload = new VideoDownloader(link, DSource);
 
             var infoCommand = new GetInfoCommand(videoInfo);
             sender.SetCommand(infoCommand);
@@ -28,7 +28,7 @@ namespace Mod18FinPractice
             sender.SetCommand(downloadCommand);
             sender.Run();
 
-            while (!File.Exists(destinationSource))
+            while (!File.Exists(DSource))
             {
 
             }
